@@ -2,6 +2,7 @@
   <div id="app">
     <ColorBar/>
     <Grid/>
+    <b-button @click="document.execCommand('copy')" variant="info">Copy JSON</b-button>
   </div>
 </template>
 

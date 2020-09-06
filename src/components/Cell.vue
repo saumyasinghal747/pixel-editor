@@ -1,5 +1,5 @@
 <template>
-    <div @click="$store.commit('changeCellColor',parseInt(x),parseInt(y));" style="width: 1vh;height: 1vh" :class="'bg-'+variant"></div>
+    <div @drag="$store.commit({type:'changeCellColor',x:parseInt(x),y:parseInt(y)});" @mousedown="$store.commit({type:'changeCellColor',x:parseInt(x),y:parseInt(y)});" style="width: 1vh;height: 1vh" :class="'bg-'+variant"></div>
 </template>
 
 <script>

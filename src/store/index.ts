@@ -3,9 +3,9 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-function makeArray(x: number,y: number,d: any) : Array<number> {
-   const a: Array<any> =  (new Array(y)).fill((new Array(x)).fill(d));
-   const b: Array<any> = $.from(true,{},a);
+function makeArray(x: number,y: number,d: any) : Array<object> {
+   return  JSON.parse(JSON.stringify((new Array(y)).fill((new Array(x)).fill(d))));
+
 }
 
 
@@ -19,16 +19,17 @@ export default new Vuex.Store({
   state: {
     grid: makeArray(100,60,{people:[],type:'road'}),
     focusedColor:"road",
-    availableColors: ["road","grass"]
+    availableColors: ["road","grass","concrete","library","history","cefg","gunn","science","language","other","util","computers","brick"]
   },
   mutations: {
     changeFColor(state,newColor){
       state.focusedColor = newColor
     },
     // @ts-ignore
-    changeCellColor(state,x,y){
+    changeCellColor(state,payload){
       // @ts-ignore
-      state.grid[y][x].type=state.focusedColor
+      //console.log(state.grid[20]);
+      state.grid[payload.y][payload.x].type=state.focusedColor
     }
   },
   actions: {
