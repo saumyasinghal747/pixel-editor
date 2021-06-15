@@ -17,9 +17,9 @@ interface Cell {
 // @ts-ignore
 export default new Vuex.Store({
   state: {
-    grid: makeArray(100,60,{people:[],type:'road'}),
+    grid: makeArray(100,70,{people:[],type:'road'}),
     focusedColor:"road",
-    availableColors: ["road","grass","concrete","library","history","cefg","gunn","science","language","other","util","computers","brick"]
+    availableColors: ["road","grass","parking","concrete","library","jade","water","history","cefg","gunn","science","language","other","util","computers","brick"]
   },
   mutations: {
     changeFColor(state,newColor){
@@ -30,6 +30,17 @@ export default new Vuex.Store({
       // @ts-ignore
       //console.log(state.grid[20]);
       state.grid[payload.y][payload.x].type=state.focusedColor
+    },
+    setGrid(state,grid){
+      for (var y in grid){
+        //console.log(y);
+        for (var x in grid[y]){
+          // @ts-ignore
+          //console.log(grid[y][x]);
+          state.grid[y][x].type = grid[y][x].type
+          //console.log(state.grid[y][x])
+        }
+      }
     }
   },
   actions: {

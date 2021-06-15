@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
+  <div id="app" class="px-5">
+    <h1 class="my-2">Pixel Editor</h1>
     <ColorBar/>
     <Grid/>
-    <b-button @click="document.execCommand('copy')" variant="info">Copy JSON</b-button>
+    <b-form-textarea placeholder="Paste import here" v-model="importString" class="mx-5 my-5"/>
+    <b-button @click="$store.commit('setGrid',JSON.parse(importString))" variant="info">Import JSON</b-button>
   </div>
 </template>
 
@@ -13,6 +15,11 @@ import ColorBar from "@/components/ColorBar.vue";
 import Grid from "@/components/Grid.vue";
 
 @Component({
+  data: function(){
+    return {
+      importString:""
+    }
+  },
   components: {
     Grid,
     ColorBar,
