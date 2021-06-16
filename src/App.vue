@@ -1,7 +1,9 @@
 <template>
   <div id="app" class="px-5">
     <h1 class="my-2">Pixel Editor</h1>
+    
     <ColorBar/>
+    <p>Click a cell to change its color. Use command/ctrl to select cells on hover. Use command/ctrl + shift to select 9 cells at a time.</p>
     <Grid/>
     <b-form-textarea placeholder="Paste import here" v-model="importString" class="mx-5 my-5"/>
     <b-button @click="$store.commit('setGrid',JSON.parse(importString))" variant="info">Import JSON</b-button>
